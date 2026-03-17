@@ -1,0 +1,29 @@
+{
+  "type": "enderstorage:create_recipe",
+  "key": {
+    "B": {
+      "item": "minecraft:blaze_rod"
+    },
+    "C": {
+      "item": "minecraft:redstone_block"
+    },
+    "O": {
+      "tag": "c:obsidians"
+    },
+    "P": {
+      "tag": "c:ender_pearls"
+    },
+    "W": {
+      "tag": "c:wools"
+    }
+  },
+  "pattern": [
+    "BWB",
+    "OCO",
+    "BPB"
+  ],
+  "result": {
+    "count": 1,
+    "id": "enderrf:ender_battery"
+  }
+}

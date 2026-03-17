@@ -1,0 +1,4 @@
+Changelog Ender Storage - Energy
+
+# 1.0.0
+- Initial release of Ender Storage - Energy, a mod that adds Ender Batteries to transfer power wirelessly
