@@ -3,7 +3,7 @@ package com.benbenlaw.enderrf.block;
 import org.jetbrains.annotations.Nullable;
 
 import com.benbenlaw.enderrf.tile.EnderRFTiles;
-import com.benbenlaw.enderrf.tile.TileEnderBattery;
+import com.benbenlaw.enderrf.tile.TileEnderFlask;
 import com.google.common.collect.ImmutableSet;
 
 import codechicken.enderstorage.block.BlockEnderStorage;
@@ -29,7 +29,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class BlockEnderBattery extends BlockEnderStorage {
+public class BlockEnderFlask extends BlockEnderStorage {
     private static final IndexedVoxelShape TANK = new IndexedVoxelShape(
             Shapes.create(0.15, (double) 0.0F, 0.15, 0.85, 0.916, 0.85), 0);
     private static final IndexedVoxelShape[][] BUTTONS = new IndexedVoxelShape[4][3];
@@ -37,14 +37,14 @@ public class BlockEnderBattery extends BlockEnderStorage {
     private static final MultiIndexedVoxelShape[] SHAPES = new MultiIndexedVoxelShape[4];
     public static Transformation[] buttonT = new Transformation[3];
 
-    public BlockEnderBattery(BlockBehaviour.Properties properties) {
+    public BlockEnderFlask(BlockBehaviour.Properties properties) {
         super(properties);
     }
 
     public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
         VoxelShape shape = TANK;
         BlockEntity t = worldIn.getBlockEntity(pos);
-        if (t instanceof TileEnderBattery tile) {
+        if (t instanceof TileEnderFlask tile) {
             shape = SHAPES[tile.rotation];
         }
 
@@ -52,12 +52,12 @@ public class BlockEnderBattery extends BlockEnderStorage {
     }
 
     public @Nullable BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return new TileEnderBattery(pos, state);
+        return new TileEnderFlask(pos, state);
     }
 
     public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(Level p_153212_, BlockState p_153213_,
             BlockEntityType<T> p_153214_) {
-        return createTickerHelper(p_153214_, EnderRFTiles.TILE_ENDER_BATTERY.get(),
+        return createTickerHelper(p_153214_, EnderRFTiles.TILE_ENDER_FLASK.get(),
                 (level, pos, state, tile) -> tile.tick());
     }
 
