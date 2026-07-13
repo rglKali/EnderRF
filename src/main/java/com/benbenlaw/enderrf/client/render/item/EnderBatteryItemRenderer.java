@@ -1,8 +1,5 @@
 package com.benbenlaw.enderrf.client.render.item;
 
-import com.benbenlaw.enderrf.client.render.RenderTileEnderBattery;
-import com.mojang.blaze3d.vertex.PoseStack;
-
 import codechicken.enderstorage.api.Frequency;
 import codechicken.lib.math.MathHelper;
 import codechicken.lib.model.PerspectiveModelState;
@@ -10,6 +7,10 @@ import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.item.IItemRenderer;
 import codechicken.lib.util.TransformUtils;
 import codechicken.lib.vec.Matrix4;
+import com.benbenlaw.enderrf.block.EnderRFBlocks;
+import com.benbenlaw.enderrf.client.render.RenderTileEnderBattery;
+import com.benbenlaw.enderrf.item.EnderRFItems;
+import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
@@ -17,8 +18,7 @@ import net.minecraft.world.item.ItemStack;
 public class EnderBatteryItemRenderer implements IItemRenderer {
 
     @Override
-    public void renderItem(ItemStack stack, ItemDisplayContext context, PoseStack poseStack, MultiBufferSource source,
-            int packedLight, int packedOverlay) {
+    public void renderItem(ItemStack stack, ItemDisplayContext context, PoseStack poseStack, MultiBufferSource source, int packedLight, int packedOverlay) {
         CCRenderState ccrs = CCRenderState.instance();
         ccrs.reset();
         ccrs.brightness = packedLight;

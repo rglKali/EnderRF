@@ -1,5 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "class": "com.benbenlaw.enderrf.client.render.item.EnderFlaskItemRenderer",
-  "loader": "codechickenlib:class"
-}

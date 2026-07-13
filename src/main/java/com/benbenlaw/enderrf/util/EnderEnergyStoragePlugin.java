@@ -1,14 +1,13 @@
-package com.benbenlaw.enderrf.plugin;
-
-import java.util.List;
-
-import com.benbenlaw.enderrf.storage.EnderEnergyStorage;
+package com.benbenlaw.enderrf.util;
 
 import codechicken.enderstorage.api.EnderStoragePlugin;
 import codechicken.enderstorage.api.Frequency;
 import codechicken.enderstorage.api.StorageType;
 import codechicken.enderstorage.manager.EnderStorageManager;
+import codechicken.enderstorage.network.EnderStorageSPH;
 import net.minecraft.server.level.ServerPlayer;
+
+import java.util.List;
 
 public class EnderEnergyStoragePlugin implements EnderStoragePlugin<EnderEnergyStorage> {
 
