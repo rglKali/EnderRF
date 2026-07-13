@@ -11,6 +11,9 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import javax.annotation.Nonnull;
+
+import static mekanism.common.capabilities.Capabilities.CHEMICAL;
+
 import java.util.function.Supplier;
 
 public class EnderRFBlockEntities {
@@ -23,11 +26,16 @@ public class EnderRFBlockEntities {
             register("tile_ender_battery", () ->
                     BlockEntityType.Builder.of(TileEnderBattery::new, EnderRFBlocks.ENDER_BATTERY.get()));
 
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<TileEnderFlask>> TILE_ENDER_FLASK =
+            register("tile_ender_flask", () ->
+                    BlockEntityType.Builder.of(TileEnderFlask::new, EnderRFBlocks.ENDER_FLASK.get()));
+
 
     public static void registerCapabilities(RegisterCapabilitiesEvent event) {
         event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK,
                 EnderRFBlockEntities.TILE_ENDER_BATTERY.get(), TileEnderBattery::getEnergyHandler);
-
+        event.registerBlockEntity(CHEMICAL.block(), EnderRFBlockEntities.TILE_ENDER_FLASK.get(), 
+                TileEnderFlask::getChemicalHandler);
 
     }
 

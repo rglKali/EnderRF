@@ -17,7 +17,8 @@ public class EnderRFItems {
     public static final DeferredItem<Item> ENDER_BATTERY_ITEM =
             ITEMS.register("ender_battery", () -> new ItemEnderStorage(EnderRFBlocks.ENDER_BATTERY.get()));
 
-
+    public static final DeferredItem<Item> ENDER_FLASK_ITEM = ITEMS.register("ender_flask",
+            () -> new ItemEnderStorage(EnderRFBlocks.ENDER_FLASK.get()));
 }
 
 
