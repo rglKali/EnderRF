@@ -1,6 +1,6 @@
 package com.benbenlaw.enderrf.client.render.item;
 
-import com.benbenlaw.enderrf.client.render.RenderTileEnderBattery;
+import com.benbenlaw.enderrf.client.render.RenderTileEnderFlask;
 import com.mojang.blaze3d.vertex.PoseStack;
 
 import codechicken.enderstorage.api.Frequency;
@@ -14,7 +14,7 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 
-public class EnderBatteryItemRenderer implements IItemRenderer {
+public class EnderFlaskItemRenderer implements IItemRenderer {
 
     @Override
     public void renderItem(ItemStack stack, ItemDisplayContext context, PoseStack poseStack, MultiBufferSource source,
@@ -25,14 +25,11 @@ public class EnderBatteryItemRenderer implements IItemRenderer {
         ccrs.overlay = packedOverlay;
 
         Frequency freq = Frequency.readFromStack(stack);
-        float ratio = 1.0f;
 
         Matrix4 mat = new Matrix4(poseStack);
-        RenderTileEnderBattery.renderTank(ccrs, mat, source, 2, (float) (MathHelper.torad * 90F), freq, 0);
+        RenderTileEnderFlask.renderTank(ccrs, mat, source, 2, (float) (MathHelper.torad * 90F), freq, 0);
 
         mat.translate(-0.5, 0, -0.5);
-
-        RenderTileEnderBattery.renderFluid(ccrs, mat, source, null, ratio);
 
         ccrs.reset();
     }

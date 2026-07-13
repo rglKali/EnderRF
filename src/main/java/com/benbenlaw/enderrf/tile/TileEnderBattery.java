@@ -1,4 +1,8 @@
-package com.benbenlaw.enderrf.block.entity;
+package com.benbenlaw.enderrf.tile;
+
+import org.jetbrains.annotations.Nullable;
+
+import com.benbenlaw.enderrf.storage.EnderEnergyStorage;
 
 import codechicken.enderstorage.manager.EnderStorageManager;
 import codechicken.enderstorage.tile.TileFrequencyOwner;
@@ -6,7 +10,6 @@ import codechicken.lib.capability.CapabilityCache;
 import codechicken.lib.data.MCDataInput;
 import codechicken.lib.data.MCDataOutput;
 import codechicken.lib.math.MathHelper;
-import com.benbenlaw.enderrf.util.EnderEnergyStorage;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
@@ -18,12 +21,9 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.energy.EmptyEnergyStorage;
 import net.neoforged.neoforge.energy.IEnergyStorage;
-import org.jetbrains.annotations.Nullable;
 
 public class TileEnderBattery extends TileFrequencyOwner {
 
@@ -37,7 +37,7 @@ public class TileEnderBattery extends TileFrequencyOwner {
     public int rotation;
 
     public TileEnderBattery(BlockPos pos, BlockState state) {
-        super(EnderRFBlockEntities.TILE_ENDER_BATTERY.get(), pos, state);
+        super(EnderRFTiles.TILE_ENDER_BATTERY.get(), pos, state);
     }
 
     @Override
@@ -52,7 +52,8 @@ public class TileEnderBattery extends TileFrequencyOwner {
     public void tick() {
         super.tick();
 
-        if (level == null) return;
+        if (level == null)
+            return;
 
         pressure_state.update(level.isClientSide);
 
@@ -95,16 +96,24 @@ public class TileEnderBattery extends TileFrequencyOwner {
                 }
 
                 @Override
-                public int getEnergyStored() { return getStorage().getEnergyStored(); }
+                public int getEnergyStored() {
+                    return getStorage().getEnergyStored();
+                }
 
                 @Override
-                public int getMaxEnergyStored() { return getStorage().getMaxEnergyStored(); }
+                public int getMaxEnergyStored() {
+                    return getStorage().getMaxEnergyStored();
+                }
 
                 @Override
-                public boolean canExtract() { return pressure_state.a_pressure; }
+                public boolean canExtract() {
+                    return pressure_state.a_pressure;
+                }
 
                 @Override
-                public boolean canReceive() { return !pressure_state.a_pressure; }
+                public boolean canReceive() {
+                    return !pressure_state.a_pressure;
+                }
             };
         }
         return this.energyHandler;
@@ -116,8 +125,7 @@ public class TileEnderBattery extends TileFrequencyOwner {
             IEnergyStorage dest = capCache.getCapabilityOr(
                     Capabilities.EnergyStorage.BLOCK,
                     side,
-                    EmptyEnergyStorage.INSTANCE
-            );
+                    EmptyEnergyStorage.INSTANCE);
 
             int extractedSim = source.extractEnergy(4000, true);
             if (extractedSim > 0) {
