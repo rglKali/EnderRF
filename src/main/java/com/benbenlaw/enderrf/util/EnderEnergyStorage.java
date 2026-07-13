@@ -1,4 +1,4 @@
-package com.benbenlaw.enderrf.storage;
+package com.benbenlaw.enderrf.util;
 
 import codechicken.enderstorage.api.AbstractEnderStorage;
 import codechicken.enderstorage.api.Frequency;
@@ -10,7 +10,8 @@ import net.neoforged.neoforge.energy.IEnergyStorage;
 
 public class EnderEnergyStorage extends AbstractEnderStorage implements IEnergyStorage {
 
-    public static final StorageType<EnderEnergyStorage> TYPE = new StorageType<>("energy");
+    public static final StorageType<EnderEnergyStorage> TYPE =
+            new StorageType<>("energy");
 
     public static final int CAPACITY = 100000;
 
@@ -86,5 +87,6 @@ public class EnderEnergyStorage extends AbstractEnderStorage implements IEnergyS
     public boolean canReceive() {
         return true;
     }
+
 
 }

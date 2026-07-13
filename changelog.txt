@@ -1,8 +1,5 @@
 Changelog Ender Storage - Energy
 
-# 1.1.0
-- Added Chemical Flask
-
 # 1.0.1
 - Added to creative tab
 
