@@ -18,6 +18,7 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
@@ -45,7 +46,10 @@ public class EnderRF{
         EnderRFBlockEntities.BLOCK_ENTITIES.register(eventBus);
 
         EnderStorageManager.registerPlugin(new EnderEnergyStoragePlugin());
-        EnderStorageManager.registerPlugin(new EnderChemicalStoragePlugin());
+
+        if (ModList.get().isLoaded("mekanism")) {
+            EnderStorageManager.registerPlugin(new EnderChemicalStoragePlugin());
+        }
 
         eventBus.addListener(this::registerCapabilities);
 
@@ -67,7 +71,10 @@ public class EnderRF{
         @SubscribeEvent
         public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
             BlockEntityRenderers.register(EnderRFBlockEntities.TILE_ENDER_BATTERY.get(), RenderTileEnderBattery::new);
-            BlockEntityRenderers.register(EnderRFBlockEntities.TILE_ENDER_FLASK.get(), RenderTileEnderFlask::new);
+
+            if (ModList.get().isLoaded("mekanism")) {
+                BlockEntityRenderers.register(EnderRFBlockEntities.TILE_ENDER_FLASK.get(), RenderTileEnderFlask::new);
+            }
         }
     }
 
@@ -85,7 +92,9 @@ public class EnderRF{
                 event.insertAfter(enderBattery, enderFlask, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             } else {
                 event.accept(new ItemStack(EnderRFBlocks.ENDER_BATTERY.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-                event.accept(new ItemStack(EnderRFBlocks.ENDER_FLASK.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+                if (ModList.get().isLoaded("mekanism")) {
+                    event.accept(new ItemStack(EnderRFBlocks.ENDER_FLASK.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+                }
             }
         }
     }

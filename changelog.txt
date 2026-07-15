@@ -1,5 +1,9 @@
 Changelog Ender Storage - Energy
 
+# 1.1.1
+- Fixed Flask recipe
+- Fixed mod crashing without mekanism
+
 # 1.1.0
 - Added Chemical Flask
 

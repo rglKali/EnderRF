@@ -1,11 +1,20 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:ingots/osmium"
+      }
+    }
+  ],
   "type": "enderstorage:create_recipe",
   "key": {
     "B": {
       "item": "minecraft:blaze_rod"
     },
     "C": {
-      "item": "c:ingots/osmium"
+      "tag": "c:ingots/osmium"
     },
     "O": {
       "tag": "c:obsidians"

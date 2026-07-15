@@ -2,6 +2,7 @@ package com.benbenlaw.enderrf.block.entity;
 
 import static mekanism.common.capabilities.Capabilities.CHEMICAL;
 
+import net.neoforged.fml.ModList;
 import org.jetbrains.annotations.Nullable;
 
 import com.benbenlaw.enderrf.util.EnderChemicalStorage;
@@ -46,6 +47,9 @@ public class TileEnderFlask extends TileFrequencyOwner {
 
     @Override
     public void tick() {
+
+        if (!ModList.get().isLoaded("mekanism")) return;
+
         super.tick();
         if (this.level == null)
             return;

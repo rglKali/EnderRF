@@ -5,6 +5,7 @@ import com.benbenlaw.enderrf.EnderRF;
 import com.benbenlaw.enderrf.block.EnderRFBlocks;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -14,11 +15,18 @@ import static codechicken.enderstorage.init.EnderStorageModContent.ENDER_TANK_BL
 public class EnderRFItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(EnderRF.MOD_ID);
 
+    public static DeferredItem<Item> ENDER_FLASK_ITEM = null;
+
     public static final DeferredItem<Item> ENDER_BATTERY_ITEM =
             ITEMS.register("ender_battery", () -> new ItemEnderStorage(EnderRFBlocks.ENDER_BATTERY.get()));
 
-    public static final DeferredItem<Item> ENDER_FLASK_ITEM = ITEMS.register("ender_flask",
-            () -> new ItemEnderStorage(EnderRFBlocks.ENDER_FLASK.get()));
+    static {
+        if (ModList.get().isLoaded("mekanism")) {
+            ENDER_FLASK_ITEM = ITEMS.register("ender_flask",
+                    () -> new ItemEnderStorage(EnderRFBlocks.ENDER_FLASK.get()));
+        }
+    }
+
 }
 
 
