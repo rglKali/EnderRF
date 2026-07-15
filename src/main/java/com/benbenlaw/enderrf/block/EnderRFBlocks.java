@@ -21,6 +21,9 @@ public class EnderRFBlocks {
             () -> new BlockEnderBattery(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE).sound(SoundType.STONE)
                     .noOcclusion()));
 
+    public static final DeferredBlock<Block> ENDER_FLASK = registerBlockWithoutBlockItem("ender_flask",
+            () -> new BlockEnderFlask(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE).sound(SoundType.STONE)
+                    .noOcclusion()));
 
     private static <T extends Block> DeferredBlock<T> registerBlockWithoutBlockItem(String name, Supplier<T> block) {
         return (DeferredBlock<T>) BLOCKS.register(name, block);

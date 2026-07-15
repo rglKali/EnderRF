@@ -6,7 +6,9 @@ import codechicken.enderstorage.manager.EnderStorageManager;
 import com.benbenlaw.enderrf.block.EnderRFBlocks;
 import com.benbenlaw.enderrf.block.entity.EnderRFBlockEntities;
 import com.benbenlaw.enderrf.client.render.RenderTileEnderBattery;
+import com.benbenlaw.enderrf.client.render.RenderTileEnderFlask;
 import com.benbenlaw.enderrf.item.EnderRFItems;
+import com.benbenlaw.enderrf.util.EnderChemicalStoragePlugin;
 import com.benbenlaw.enderrf.util.EnderEnergyStorage;
 import com.benbenlaw.enderrf.util.EnderEnergyStoragePlugin;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
@@ -43,6 +45,7 @@ public class EnderRF{
         EnderRFBlockEntities.BLOCK_ENTITIES.register(eventBus);
 
         EnderStorageManager.registerPlugin(new EnderEnergyStoragePlugin());
+        EnderStorageManager.registerPlugin(new EnderChemicalStoragePlugin());
 
         eventBus.addListener(this::registerCapabilities);
 
@@ -64,6 +67,7 @@ public class EnderRF{
         @SubscribeEvent
         public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
             BlockEntityRenderers.register(EnderRFBlockEntities.TILE_ENDER_BATTERY.get(), RenderTileEnderBattery::new);
+            BlockEntityRenderers.register(EnderRFBlockEntities.TILE_ENDER_FLASK.get(), RenderTileEnderFlask::new);
         }
     }
 
@@ -77,8 +81,11 @@ public class EnderRF{
             if (craftingTable != null) {
                 ItemStack enderBattery = new ItemStack(EnderRFBlocks.ENDER_BATTERY.get());
                 event.insertAfter(craftingTable, enderBattery, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+                ItemStack enderFlask = new ItemStack(EnderRFBlocks.ENDER_FLASK.get());
+                event.insertAfter(enderBattery, enderFlask, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             } else {
                 event.accept(new ItemStack(EnderRFBlocks.ENDER_BATTERY.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+                event.accept(new ItemStack(EnderRFBlocks.ENDER_FLASK.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             }
         }
     }
