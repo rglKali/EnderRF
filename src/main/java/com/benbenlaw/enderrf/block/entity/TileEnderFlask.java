@@ -225,7 +225,7 @@ public class TileEnderFlask extends TileFrequencyOwner {
 
                 @Override
                 public ChemicalStack insertChemical(int tank, ChemicalStack stack, Action action) {
-                    return pressure_state.a_pressure ? ChemicalStack.EMPTY : getStorage().insertChemical(tank, stack, action);
+                    return pressure_state.a_pressure ? stack : getStorage().insertChemical(tank, stack, action);
                 }
 
                 @Override
